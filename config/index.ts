@@ -1,38 +1,20 @@
 import type { Metadata } from "next";
 
+import { portfolioContent } from "@/data/portfolio";
+
 export const links = {
-  sourceCode: "https://github.com/midhun8629-sudo/midhun-de-v2",
-  ownerName: "Midhun Mohanan",
-  ownerEmail: "midhun.de@proton.me",
+  sourceCode: portfolioContent.owner.sourceCode,
+  ownerName: portfolioContent.owner.shortName,
+  ownerEmail: portfolioContent.owner.email,
 } as const;
 
 export const siteConfig: Metadata = {
-  metadataBase: new URL("https://midhun.de"),
-  title: "Midhun Mohanan | Semiconductor Simulation",
-  description:
-    "FEM and multiphysics modelling for thermal, fluid and structural problems in semiconductor and AI hardware.",
-  keywords: [
-    "computational engineering",
-    "finite element method",
-    "multiphysics simulation",
-    "thermal simulation",
-    "thermo-mechanical simulation",
-    "electronics cooling",
-    "semiconductor packaging",
-  ] as Array<string>,
+  title: portfolioContent.metadata.title,
+  description: portfolioContent.metadata.description,
+  keywords: [...portfolioContent.metadata.keywords],
   authors: {
-    name: links.ownerName,
-    url: "https://midhun.de",
+    name: portfolioContent.owner.name,
+    url: portfolioContent.owner.github,
   },
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: "https://midhun.de",
-    title: "Midhun Mohanan | Semiconductor Simulation",
-    description:
-      "Physics-based simulation for thermal management and reliability of semiconductor and AI hardware.",
-    siteName: "Midhun Mohanan",
-  },
+  metadataBase: new URL(portfolioContent.owner.website),
 } as const;
